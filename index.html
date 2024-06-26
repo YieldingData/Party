@@ -9,6 +9,9 @@
             margin: 0;
             background-color: black;
             overflow: hidden;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
         }
         #canvas {
             display: block;
@@ -16,12 +19,29 @@
         #overlay {
             position: fixed;
             bottom: 0;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            height: 100px;
             pointer-events: none;
+        }
+        .header-text {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .header-text h1, .header-text h2 {
+            margin: 0;
         }
     </style>
 </head>
 <body>
+    <div class="header-text">
+        <h1>Party in the Park</h1>
+        <h2>July 3rd</h2>
+    </div>
     <canvas id="canvas"></canvas>
     <img id="overlay" src="overlay.png" alt="Overlay Image">
     <script>
@@ -169,8 +189,17 @@
             fireworks.push(new Firework(sx, sy, tx, ty));
         });
 
+        function launchFirework() {
+            const sx = canvas.width / 2;
+            const sy = canvas.height;
+            const tx = random(0, canvas.width);
+            const ty = random(0, canvas.height / 2);
+            fireworks.push(new Firework(sx, sy, tx, ty));
+        }
+
+        setInterval(launchFirework, 1500);
+
         loop();
     </script>
 </body>
 </html>
-
