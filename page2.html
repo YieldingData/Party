@@ -14,22 +14,75 @@
         }
         .header {
             padding: 20px;
+            font-size: 24px;
         }
-        .link {
-            margin-top: 20px;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: red;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
+        .beer-container {
+            position: relative;
+            width: 200px;
+            height: 400px;
+            margin: 50px auto;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .beer-glass {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, #f7c948, #f7d960);
+            border-radius: 0 0 10px 10px;
+            transition: height 3s ease;
+        }
+        .foam {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: #fff;
+            border-radius: 50%;
+            transition: height 3s ease;
+        }
+        .pour {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 0;
+            background: linear-gradient(to top, #f7c948, #f7d960);
+            border-radius: 10px;
+            animation: pour 3s ease forwards;
+        }
+        @keyframes pour {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Welcome to the Second Page</h1>
+        Bring something to be grilled, and something to drink
     </div>
-    <a href="index.html" class="link">Back to Main Page</a>
+    <div class="beer-container">
+        <div class="beer-glass" id="beer-glass"></div>
+        <div class="foam" id="foam"></div>
+        <div class="pour"></div>
+    </div>
+    <a href="index.html" style="color: white; text-decoration: none;">Back to Main Page</a>
+    <script>
+        window.onload = function() {
+            const beerGlass = document.getElementById('beer-glass');
+            const foam = document.getElementById('foam');
+            setTimeout(() => {
+                beerGlass.style.height = '80%';
+                foam.style.height = '10%';
+            }, 500);
+        }
+    </script>
 </body>
 </html>
