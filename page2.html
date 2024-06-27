@@ -32,7 +32,7 @@
             height: 0;
             background: linear-gradient(to top, #f7c948, #f7d960);
             border-radius: 0 0 10px 10px;
-            transition: height 3s ease;
+            animation: fillBeer 3s forwards;
         }
         .foam {
             position: absolute;
@@ -41,26 +41,15 @@
             height: 0;
             background: #fff;
             border-radius: 50%;
-            transition: height 3s ease;
+            animation: fillFoam 3s forwards;
         }
-        .pour {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 0;
-            background: linear-gradient(to top, #f7c948, #f7d960);
-            border-radius: 10px;
-            animation: pour 3s ease forwards;
+        @keyframes fillBeer {
+            0% { height: 0; }
+            100% { height: 80%; }
         }
-        @keyframes pour {
-            0% {
-                height: 0;
-            }
-            100% {
-                height: 100%;
-            }
+        @keyframes fillFoam {
+            0% { height: 0; }
+            100% { height: 10%; }
         }
     </style>
 </head>
@@ -69,20 +58,9 @@
         Bring something to be grilled, and something to drink
     </div>
     <div class="beer-container">
-        <div class="beer-glass" id="beer-glass"></div>
-        <div class="foam" id="foam"></div>
-        <div class="pour"></div>
+        <div class="beer-glass"></div>
+        <div class="foam"></div>
     </div>
     <a href="index.html" style="color: white; text-decoration: none;">Back to Main Page</a>
-    <script>
-        window.onload = function() {
-            const beerGlass = document.getElementById('beer-glass');
-            const foam = document.getElementById('foam');
-            setTimeout(() => {
-                beerGlass.style.height = '80%';
-                foam.style.height = '10%';
-            }, 500);
-        }
-    </script>
 </body>
 </html>
