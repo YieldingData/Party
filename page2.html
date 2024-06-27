@@ -16,40 +16,32 @@
             padding: 20px;
             font-size: 24px;
         }
-        .beer-container {
+        .video-container {
             position: relative;
-            width: 200px;
-            height: 400px;
+            width: 80%;
+            max-width: 600px;
             margin: 50px auto;
+        }
+        .video-container video {
+            width: 100%;
             border: 2px solid #fff;
             border-radius: 10px;
-            overflow: hidden;
         }
-        .beer-glass {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(to top, #f7c948, #f7d960);
-            border-radius: 0 0 10px 10px;
-            animation: fillBeer 3s forwards;
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
         }
-        .foam {
-            position: absolute;
-            bottom: 80%;
-            width: 100%;
-            height: 0;
-            background: #fff;
-            border-radius: 50%;
-            animation: fillFoam 3s forwards;
-        }
-        @keyframes fillBeer {
-            0% { height: 0; }
-            100% { height: 80%; }
-        }
-        @keyframes fillFoam {
-            0% { height: 0; }
-            100% { height: 10%; bottom: 90%; }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -57,10 +49,15 @@
     <div class="header">
         Bring something to be grilled, and something to drink
     </div>
-    <div class="beer-container">
-        <div class="beer-glass"></div>
-        <div class="foam"></div>
+    <div class="video-container">
+        <video controls>
+            <source src="beer-pouring.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
-    <a href="index.html" style="color: white; text-decoration: none;">Back to Main Page</a>
+    <div class="button-container">
+        <a href="index.html" class="button">When</a>
+        <a href="page3.html" class="button">Where</a>
+    </div>
 </body>
 </html>
