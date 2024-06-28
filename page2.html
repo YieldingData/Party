@@ -3,25 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2D Bowling Game</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Top-Down Bowling Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <div class="lane">
-        <div class="ball" id="ball"></div>
-        <div class="pins" id="pins">
-            <div class="pin" id="pin1"></div>
-            <div class="pin" id="pin2"></div>
-            <div class="pin" id="pin3"></div>
-            <div class="pin" id="pin4"></div>
-            <div class="pin" id="pin5"></div>
-            <div class="pin" id="pin6"></div>
-            <div class="pin" id="pin7"></div>
-            <div class="pin" id="pin8"></div>
-            <div class="pin" id="pin9"></div>
-            <div class="pin" id="pin10"></div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const ball = {
+            x: canvas.width / 2,
+            y: canvas.height - 30,
+            radius: 10,
+            dx: 0,
+            dy: -2
+        };
+
+        const pins = [];
+        for (let i = 0; i < 10; i++) {
+            pins.push({
+                x: canvas.width / 2 + (i % 2 === 0 ? i * 10 : -i * 10),
+                y: 100 + Math.floor(i / 2) * 30,
+                radius: 5
+            });
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fillStyle = '#0095DD';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawPins() {
+            pins.forEach(pin => {
+                ctx.beginPath();
+                ctx.arc(pin.x, pin.y, pin.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#DD9500';
+                ctx.fill();
+                ctx.closePath();
+            });
+        }
+
+        function updateBall() {
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            if (ball.x + ball.dx > canvas.width - ball.radius || ball.x + ball.dx < ball.radius) {
+                ball.dx = -ball.dx;
+            }
+            if (ball.y + ball.dy < ball.radius) {
+                ball.dy = -ball.dy;
+            }
+        }
+
+        function collisionDetection() {
+            pins.forEach((pin, index) => {
+                const dist = Math.hypot(ball.x - pin.x, ball.y - pin.y);
+                if (dist - ball.radius - pin.radius < 0) {
+                    pins.splice(index, 1);
+                }
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            drawPins();
+            updateBall();
+            collisionDetection();
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
 </body>
 </html>
