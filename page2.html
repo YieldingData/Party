@@ -21,10 +21,28 @@
             padding: 20px;
             font-size: 24px;
         }
-        .food-image {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
+        .bowling-lane {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(to bottom, #8b4513, #cd853f);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .bowling-ball {
+            position: absolute;
+            bottom: 20px;
+            left: calc(50% - 25px);
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            border-radius: 50%;
+            animation: rollBall 3s ease-in-out infinite;
+        }
+        @keyframes rollBall {
+            0% { bottom: 20px; }
+            50% { bottom: calc(100% - 70px); }
+            100% { bottom: 20px; }
         }
         .button-container {
             position: absolute;
@@ -49,7 +67,9 @@
     <div class="header">
         Bring something to be grilled, and something to drink
     </div>
-    <img src="food.png" alt="Food Image" class="food-image">
+    <div class="bowling-lane">
+        <div class="bowling-ball"></div>
+    </div>
     <div class="button-container">
         <a href="index.html" class="button">When</a>
         <a href="page3.html" class="button">Where</a>
