@@ -78,14 +78,14 @@
             const runner = Runner.create();
             Runner.run(runner, engine);
 
-            const ball = Bodies.circle(300, 500, 25, { restitution: 0.8 });
+            const ball = Bodies.circle(300, 580, 25, { restitution: 0.8 });
             Composite.add(world, ball);
 
             const pins = [];
             const pinWidth = 20;
             const pinHeight = 40;
             const rows = 4;
-            let startX = 260;
+            let startX = 300 - (rows * pinWidth) / 2;
 
             for (let row = 0; row < rows; row++) {
                 for (let i = 0; i <= row; i++) {
@@ -103,7 +103,7 @@
             Composite.add(world, ground);
 
             function shootBall() {
-                Body.setPosition(ball, { x: 300, y: 500 });
+                Body.setPosition(ball, { x: 300, y: 580 });
                 Body.setVelocity(ball, { x: (Math.random() - 0.5) * 10, y: -20 });
             }
 
