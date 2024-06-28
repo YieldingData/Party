@@ -40,7 +40,7 @@ body {
     border: 2px solid black;
     border-radius: 10px;
     position: absolute;
-    transform: rotate(180deg); /* Rotate the pins */
+    transform: rotate(0deg); /* Rotate the pins */
 }
 
 #pin1 { left: 0px; }
