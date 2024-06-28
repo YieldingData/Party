@@ -3,91 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top-Down Bowling Game</title>
+    <title>Second Page</title>
     <style>
         body {
             margin: 0;
-            overflow: hidden;
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        canvas {
-            display: block;
+        .header {
+            padding: 20px;
+            font-size: 24px;
+        }
+        .game-container {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const ball = {
-            x: canvas.width / 2,
-            y: canvas.height - 30,
-            radius: 10,
-            dx: 0,
-            dy: -2
-        };
-
-        const pins = [];
-        for (let i = 0; i < 10; i++) {
-            pins.push({
-                x: canvas.width / 2 + (i % 2 === 0 ? i * 10 : -i * 10),
-                y: 100 + Math.floor(i / 2) * 30,
-                radius: 5
-            });
-        }
-
-        function drawBall() {
-            ctx.beginPath();
-            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-            ctx.fillStyle = '#0095DD';
-            ctx.fill();
-            ctx.closePath();
-        }
-
-        function drawPins() {
-            pins.forEach(pin => {
-                ctx.beginPath();
-                ctx.arc(pin.x, pin.y, pin.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#DD9500';
-                ctx.fill();
-                ctx.closePath();
-            });
-        }
-
-        function updateBall() {
-            ball.x += ball.dx;
-            ball.y += ball.dy;
-
-            if (ball.x + ball.dx > canvas.width - ball.radius || ball.x + ball.dx < ball.radius) {
-                ball.dx = -ball.dx;
-            }
-            if (ball.y + ball.dy < ball.radius) {
-                ball.dy = -ball.dy;
-            }
-        }
-
-        function collisionDetection() {
-            pins.forEach((pin, index) => {
-                const dist = Math.hypot(ball.x - pin.x, ball.y - pin.y);
-                if (dist - ball.radius - pin.radius < 0) {
-                    pins.splice(index, 1);
-                }
-            });
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawBall();
-            drawPins();
-            updateBall();
-            collisionDetection();
-            requestAnimationFrame(draw);
-        }
-
-        draw();
-    </script>
+    <div class="header">
+        Bring something to be grilled, and something to drink
+    </div>
+    <div class="game-container">
+        <iframe src="https://iliagrigorevdev.github.io/bowling/" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="button-container">
+        <a href="index.html" class="button">When</a>
+        <a href="page3.html" class="button">Where</a>
+    </div>
 </body>
 </html>
