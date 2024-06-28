@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.lane {
+    position: relative;
+    width: 600px;
+    height: 800px;
+    background-color: #e2e2e2;
+    border: 2px solid #000;
+}
+
+.ball {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.pins {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pin {
+    width: 20px;
+    height: 60px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+}
+
+#pin1 { left: 0px; }
+#pin2 { left: -25px; top: 60px; }
+#pin3 { left: 25px; top: 60px; }
+#pin4 { left: -50px; top: 120px; }
+#pin5 { left: 0px; top: 120px; }
+#pin6 { left: 50px; top: 120px; }
+#pin7 { left: -75px; top: 180px; }
+#pin8 { left: -25px; top: 180px; }
+#pin9 { left: 25px; top: 180px; }
+#pin10 { left: 75px; top: 180px; }
