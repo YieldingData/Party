@@ -43,7 +43,7 @@ body {
     transform: rotate(0deg); /* Rotate the pins */
 }
 
-#pin1 { left: 0px; }
+#pin1 { left: 200px; }
 #pin2 { left: -25px; top: 60px; }
 #pin3 { left: 25px; top: 60px; }
 #pin4 { left: -50px; top: 120px; }
